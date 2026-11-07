@@ -50,8 +50,8 @@ $('#enquiryForm').addEventListener('submit', e => {
   const name = $('#customerName').value.trim();
   const product = $('#customerProduct').value.trim();
   const message = $('#customerMessage').value.trim();
-  const text = `Hello Satyam Traders, I would like to make an enquiry.%0A%0AName: ${encodeURIComponent(name || 'Not provided')}%0AProduct: ${encodeURIComponent(product)}%0AMessage: ${encodeURIComponent(message || 'Please share availability and price.')}`;
-  window.open(`https://wa.me/917903201038?text=${text}`, '_blank', 'noopener');
+  const text = `Hello Pandaking, I would like to make an enquiry.%0A%0AName: ${encodeURIComponent(name || 'Not provided')}%0AProduct: ${encodeURIComponent(product)}%0AMessage: ${encodeURIComponent(message || 'Please share availability and price.')}`;
+  window.open(`https://wa.me/917870138709?text=${text}`, '_blank', 'noopener');
   closeEnquiry();
 });
 $('#year').textContent = new Date().getFullYear();
@@ -61,3 +61,29 @@ backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 }
+
+// Background Audio Playlist (Plays song 1, then song 2, and loops continuously)
+const playlist = [
+  "https://files.catbox.moe/0lbphq.mp3",
+  "https://files.catbox.moe/bh71jm.mp3"
+];
+let currentSongIndex = 0;
+const bgAudio = new Audio(playlist[currentSongIndex]);
+bgAudio.volume = 0.5;
+
+bgAudio.addEventListener('ended', () => {
+  currentSongIndex = (currentSongIndex + 1) % playlist.length;
+  bgAudio.src = playlist[currentSongIndex];
+  bgAudio.play().catch(() => {});
+});
+
+// Start playing music on the first user interaction anywhere on the page
+function startMusic() {
+  bgAudio.play().catch(() => {});
+  document.removeEventListener('click', startMusic);
+  document.removeEventListener('touchstart', startMusic);
+  document.removeEventListener('keydown', startMusic);
+}
+document.addEventListener('click', startMusic);
+document.addEventListener('touchstart', startMusic);
+document.addEventListener('keydown', startMusic);
