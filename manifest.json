@@ -1,0 +1,10 @@
+{
+  "name": "Satyam Traders",
+  "short_name": "Satyam Traders",
+  "description": "Product enquiries for building materials, electronics, home appliances and sanitaryware in Saharsa.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#102b46",
+  "icons": []
+}
