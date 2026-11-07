@@ -86,4 +86,4 @@ function startMusic() {
 }
 document.addEventListener('click', startMusic);
 document.addEventListener('touchstart', startMusic);
-document.addEventListener('keydown', startMusic);
+document.addEventListener('keydown', strtMusic = startMusic);
